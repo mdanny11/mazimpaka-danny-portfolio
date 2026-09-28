@@ -18,14 +18,14 @@ export function CertificationsSection() {
   const active = certifications.find((item) => item.id === activeId);
 
   return (
-    <section id="certifications" className="px-4 py-20 sm:px-6">
-      <div className="mx-auto max-w-6xl">
+    <section id="certifications" className="page-section">
+      <div className="page-container">
         <SectionHeading
           eyebrow="Certifications"
           title="Certificate wall"
           description="Linux Foundation introductory credentials. Kubernetes is foundational training, not advanced production expertise."
         />
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {certifications.map((cert) => (
             <Reveal key={cert.id}>
               <button
@@ -47,7 +47,7 @@ export function CertificationsSection() {
       </div>
 
       <Dialog open={Boolean(active)} onOpenChange={(open) => !open && setActiveId(null)}>
-        <DialogContent className="max-w-lg">
+        <DialogContent className="max-h-[min(90dvh,40rem)] w-[calc(100%-2rem)] max-w-lg overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{active?.name}</DialogTitle>
             <DialogDescription>

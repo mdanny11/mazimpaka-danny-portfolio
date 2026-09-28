@@ -64,8 +64,8 @@ export function GithubSection() {
   const profile = githubProfileUrl();
 
   return (
-    <section id="github" className="px-4 py-20 sm:px-6">
-      <div className="mx-auto max-w-6xl">
+    <section id="github" className="page-section">
+      <div className="page-container">
         <SectionHeading
           eyebrow="GitHub"
           title="Public repositories"
@@ -93,11 +93,11 @@ export function GithubSection() {
           </p>
         ) : null}
         {!loading && data?.repos.length ? (
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
             {data.repos.map((repo) => (
               <Reveal key={repo.url}>
                 <article className="flex h-full flex-col rounded-xl bg-white p-5 shadow-[var(--card-shadow)] ring-1 ring-navy/10 dark:bg-card dark:ring-gold/15">
-                  <h3 className="font-heading text-xl">{repo.name}</h3>
+                  <h3 className="font-heading text-xl break-words">{repo.name}</h3>
                   <p className="mt-2 min-h-12 text-sm text-muted-foreground">
                     {repo.description || "No description provided on GitHub."}
                   </p>

@@ -35,22 +35,22 @@ export function ProjectsSection() {
   }, [filter, query]);
 
   return (
-    <section id="projects" className="px-4 py-20 sm:px-6">
-      <div className="mx-auto max-w-6xl">
+    <section id="projects" className="page-section">
+      <div className="page-container">
         <SectionHeading
           eyebrow="Projects"
           title="Selected engineering work"
           description="Filter by domain. Case study pages include architecture, challenges, and honest placeholders for unpublished links."
         />
         <div className="mt-8 flex flex-col gap-4">
-          <label className="relative block max-w-md">
+          <label className="relative block w-full max-w-md">
             <span className="sr-only">Search projects</span>
             <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search by name, stack, or keyword"
-              className="h-10 pl-9"
+              className="h-11 min-h-11 pl-9"
             />
           </label>
           <div className="flex flex-wrap gap-2" role="group" aria-label="Project filters">
@@ -62,6 +62,7 @@ export function ProjectsSection() {
                 variant={filter === item ? "gold" : "outline"}
                 onClick={() => setFilter(item)}
                 aria-pressed={filter === item}
+                className="min-h-11"
               >
                 {item}
               </Button>
@@ -73,8 +74,8 @@ export function ProjectsSection() {
             <Reveal key={project.slug}>
               <article
                 className={cn(
-                  "flex h-full flex-col rounded-xl bg-white p-5 shadow-[var(--card-shadow)] ring-1 ring-navy/10 dark:bg-card dark:ring-gold/15",
-                  project.featured && "md:col-span-2 md:grid md:grid-cols-2 md:gap-6"
+                  "flex h-full min-w-0 flex-col rounded-xl bg-white p-5 shadow-[var(--card-shadow)] ring-1 ring-navy/10 dark:bg-card dark:ring-gold/15",
+                  project.featured && "md:col-span-2 lg:grid lg:grid-cols-2 lg:gap-6"
                 )}
               >
                 <div>

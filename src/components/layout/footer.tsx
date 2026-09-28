@@ -8,8 +8,8 @@ export function Footer() {
 
   return (
     <footer className="border-t border-navy/10 bg-white dark:border-gold/15 dark:bg-card">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 py-10 sm:px-6">
-        <BrandLogo height={80} />
+      <div className="page-container flex flex-col items-center gap-6 px-4 py-10 sm:px-6">
+        <BrandLogo height={80} className="max-h-16 w-auto sm:max-h-20" />
         <DiamondDivider />
         <p className="font-heading text-xl text-navy dark:text-ivory">
           {siteConfig.name}
@@ -17,7 +17,7 @@ export function Footer() {
         <p className="text-sm text-muted-foreground">
           Software Engineer · {siteConfig.location}
         </p>
-        <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
+        <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-4 gap-y-2 px-2 text-sm">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href} className="hover:text-gold">
               {item.label}

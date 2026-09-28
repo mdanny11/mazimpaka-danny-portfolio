@@ -14,7 +14,7 @@ export function Reveal({
 }) {
   return (
     <motion.div
-      className={className}
+      className={cn("min-w-0", className)}
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -36,10 +36,10 @@ export function SectionHeading({
 }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <p className="text-xs font-semibold tracking-[0.22em] text-gold uppercase">
+      <p className="text-xs font-semibold tracking-[0.16em] text-gold uppercase sm:tracking-[0.22em]">
         {eyebrow}
       </p>
-      <h2 className="mt-3 font-heading text-3xl font-semibold text-balance sm:text-4xl">
+      <h2 className="mt-3 font-heading text-2xl font-semibold text-balance sm:text-3xl lg:text-4xl">
         {title}
       </h2>
       {description ? (
@@ -55,9 +55,9 @@ export function DiamondDivider({ className }: { className?: string }) {
       className={cn("flex items-center justify-center gap-3", className)}
       aria-hidden="true"
     >
-      <span className="h-px w-16 bg-gold/80" />
+      <span className="h-px w-10 bg-gold/80 sm:w-16" />
       <span className="size-1.5 rotate-45 bg-gold" />
-      <span className="h-px w-16 bg-gold/80" />
+      <span className="h-px w-10 bg-gold/80 sm:w-16" />
     </div>
   );
 }

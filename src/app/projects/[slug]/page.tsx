@@ -52,9 +52,9 @@ export default async function ProjectCaseStudyPage({
   ];
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-      <p className="text-xs tracking-[0.2em] text-gold uppercase">Case study</p>
-      <h1 className="mt-3 font-heading text-4xl font-semibold">{project.title}</h1>
+    <article className="mx-auto w-full min-w-0 max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+      <p className="text-xs tracking-[0.16em] text-gold uppercase sm:tracking-[0.2em]">Case study</p>
+      <h1 className="mt-3 font-heading text-3xl font-semibold sm:text-4xl">{project.title}</h1>
       {project.partner ? (
         <p className="mt-2 text-muted-foreground">Partner: {project.partner}</p>
       ) : null}

@@ -140,11 +140,28 @@
   }
 
   html {
-    @apply scroll-smooth font-sans;
+    @apply scroll-smooth font-sans overflow-x-clip;
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply min-w-0 max-w-full overflow-x-clip bg-background text-foreground antialiased;
+  }
+
+  main,
+  header,
+  footer,
+  section,
+  article {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  img,
+  video,
+  svg,
+  canvas,
+  iframe {
+    max-width: 100%;
   }
 
   h1,
@@ -152,10 +169,31 @@
   h3,
   h4 {
     font-family: var(--font-heading), ui-serif, Georgia, serif;
+    overflow-wrap: break-word;
+  }
+
+  a,
+  p,
+  li {
+    overflow-wrap: break-word;
+  }
+
+  code {
+    overflow-wrap: anywhere;
   }
 
   :focus-visible {
     @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  .page-section {
+    @apply w-full min-w-0 px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20;
+  }
+
+  .page-container {
+    @apply mx-auto w-full min-w-0 max-w-6xl;
   }
 }
 

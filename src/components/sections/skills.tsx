@@ -13,14 +13,14 @@ const levels = [
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="px-4 py-20 sm:px-6">
-      <div className="mx-auto max-w-6xl">
+    <section id="skills" className="page-section">
+      <div className="page-container">
         <SectionHeading
           eyebrow="Skills"
           title="A credible engineering dashboard"
           description="No percentage bars. Strength is grouped by demonstrated practice."
         />
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {levels.map((level, index) => (
             <Reveal key={level.key} delay={index * 0.05}>
               <article className="h-full rounded-xl bg-white p-5 shadow-[var(--card-shadow)] ring-1 ring-navy/10 dark:bg-card dark:ring-gold/15">
@@ -42,9 +42,9 @@ export function SkillsSection() {
         <Reveal className="mt-12 rounded-xl bg-white p-5 shadow-[var(--card-shadow)] ring-1 ring-navy/10 dark:bg-card dark:ring-gold/15">
           <h3 className="mb-4 font-heading text-xl">Skill categories</h3>
           <Tabs defaultValue={skillCategories[0].id}>
-            <TabsList variant="line" className="flex h-auto w-full flex-wrap justify-start gap-1 bg-transparent p-0">
+            <TabsList variant="line" className="flex h-auto w-full flex-wrap justify-start gap-1 overflow-x-auto bg-transparent p-0">
               {skillCategories.map((category) => (
-                <TabsTrigger key={category.id} value={category.id} className="px-3">
+                <TabsTrigger key={category.id} value={category.id} className="min-h-11 px-3">
                   {category.label}
                 </TabsTrigger>
               ))}

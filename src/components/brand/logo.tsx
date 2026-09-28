@@ -21,7 +21,7 @@ export function BrandLogo({
       width={height}
       height={height}
       priority={priority}
-      className={cn("h-full w-auto bg-transparent object-contain", className)}
+      className={cn("h-full w-auto max-w-full bg-transparent object-contain", className)}
     />
   );
 

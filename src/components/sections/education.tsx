@@ -12,11 +12,11 @@ import { education } from "@/lib/content";
 
 export function EducationSection() {
   return (
-    <section id="education" className="px-4 py-20 sm:px-6">
-      <div className="mx-auto max-w-4xl">
+    <section id="education" className="page-section">
+      <div className="page-container max-w-4xl">
         <SectionHeading eyebrow="Education" title="Academic foundation" />
         <Reveal className="mt-10">
-          <article className="rounded-xl bg-white p-6 shadow-[var(--card-shadow)] ring-1 ring-navy/10 dark:bg-card dark:ring-gold/15">
+          <article className="rounded-xl bg-white p-5 shadow-[var(--card-shadow)] ring-1 ring-navy/10 sm:p-6 dark:bg-card dark:ring-gold/15">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <h3 className="font-heading text-2xl">{education.institution}</h3>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, IBM_Plex_Mono, Source_Sans_3 } from "next/font/google";
 import Script from "next/script";
 import { Footer } from "@/components/layout/footer";
@@ -63,6 +63,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -82,9 +89,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${sourceSans.variable} ${cormorant.variable} ${ibmPlex.variable} h-full`}
+      className={`${sourceSans.variable} ${cormorant.variable} ${ibmPlex.variable} h-full overflow-x-clip`}
     >
-      <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
+      <body className="flex min-h-full min-w-0 max-w-full flex-col overflow-x-clip bg-background font-sans text-foreground">
         <Script id="danny-theme-default" strategy="beforeInteractive">
           {`try{localStorage.setItem("danny-theme","dark")}catch(e){}`}
         </Script>

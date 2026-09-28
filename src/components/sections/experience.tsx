@@ -9,8 +9,8 @@ export function ExperienceSection() {
   const [active, setActive] = useState(timeline[timeline.length - 1].id);
 
   return (
-    <section id="experience" className="px-4 py-20 sm:px-6">
-      <div className="mx-auto max-w-4xl">
+    <section id="experience" className="page-section">
+      <div className="page-container max-w-4xl">
         <SectionHeading
           eyebrow="Experience"
           title="A vertical path from study to practice"
@@ -25,7 +25,7 @@ export function ExperienceSection() {
                   <button
                     type="button"
                     onClick={() => setActive(item.id)}
-                    className="flex w-full items-start gap-4 text-left"
+                    className="flex min-h-11 w-full items-start gap-4 text-left"
                     aria-expanded={selected}
                   >
                     <span
@@ -42,7 +42,7 @@ export function ExperienceSection() {
                     </span>
                   </button>
                   {selected ? (
-                    <div className="mt-3 ml-8 rounded-lg bg-white p-4 text-sm leading-6 shadow-[var(--card-shadow)] ring-1 ring-navy/10 dark:bg-card dark:ring-gold/15">
+                    <div className="mt-3 ml-0 rounded-lg bg-white p-4 text-sm leading-6 shadow-[var(--card-shadow)] ring-1 ring-navy/10 sm:ml-8 dark:bg-card dark:ring-gold/15">
                       <p>{item.detail}</p>
                       {"bullets" in item && item.bullets ? (
                         <ul className="mt-3 list-disc space-y-1 pl-5">

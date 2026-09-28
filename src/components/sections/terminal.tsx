@@ -128,21 +128,21 @@ export function TerminalSection() {
   }
 
   return (
-    <section id="terminal" className="px-4 py-20 sm:px-6">
-      <div className="mx-auto max-w-4xl">
+    <section id="terminal" className="page-section">
+      <div className="page-container max-w-4xl">
         <SectionHeading
           eyebrow="Interactive terminal"
           title="Explore the portfolio from the command line"
         />
         <Reveal className="mt-10">
           <div
-            className="overflow-hidden rounded-xl border border-navy/30 bg-navy font-mono text-sm text-[#F8F5EE] shadow-[var(--card-shadow)]"
+            className="overflow-hidden rounded-xl border border-navy/30 bg-navy font-mono text-xs text-[#F8F5EE] shadow-[var(--card-shadow)] sm:text-sm"
             onClick={() => inputRef.current?.focus()}
           >
             <div className="border-b border-white/10 px-4 py-2 text-xs tracking-wide text-gold">
               danny@portfolio:~
             </div>
-            <div ref={logRef} className="max-h-[28rem] overflow-y-auto px-4 py-4">
+            <div ref={logRef} className="max-h-[28rem] overflow-x-auto overflow-y-auto px-3 py-4 sm:px-4">
               {lines.map((line, index) => (
                 <pre key={`${line.type}-${index}`} className="mb-2 whitespace-pre-wrap">
                   {line.type === "input" ? (
@@ -164,7 +164,7 @@ export function TerminalSection() {
                   value={value}
                   onChange={(event) => setValue(event.target.value)}
                   onKeyDown={onKeyDown}
-                  className="w-full bg-transparent outline-none"
+                  className="min-h-11 w-full min-w-0 bg-transparent outline-none"
                   autoComplete="off"
                   spellCheck={false}
                   aria-label="Terminal command"
