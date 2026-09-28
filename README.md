@@ -77,7 +77,19 @@ Project GitHub / live / docs URLs live in `src/lib/projects.ts` (`links`). Certi
 
 `POST /api/contact` validates name, email, subject, and message, and ignores honeypot spam (`company_website`).
 
-If Resend is not fully configured, the API returns **503** and the UI shows that email delivery is not configured. It does not display a fake success state.
+Messages are delivered with [Resend](https://resend.com) to `CONTACT_TO_EMAIL` (default: `mdanny892@gmail.com`).
+
+To enable sending:
+
+1. Create a free account at [resend.com](https://resend.com) using **mdanny892@gmail.com**
+2. Copy the API key (`re_...`)
+3. Put it in `.env.local` as `RESEND_API_KEY=re_...`
+4. Restart the app (`npm.cmd run dev`)
+5. Submit a test message on the Contact form
+
+The Resend test sender (`beth.t@example.com`) can only deliver to the email you used to sign up. For a custom from-address later, verify a domain in Resend and set `CONTACT_FROM_EMAIL`.
+
+If `RESEND_API_KEY` is missing, the API returns **503**. It does not display a fake success state.
 
 ## GitHub section
 

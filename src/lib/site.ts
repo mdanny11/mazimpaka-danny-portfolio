@@ -45,10 +45,12 @@ export const siteConfig = {
     portrait: "/images/My_cutout_mazimpaka_danny.png",
   },
   contact: {
-    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "",
-    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "",
-    linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "",
-    githubUsername: process.env.NEXT_PUBLIC_GITHUB_USERNAME ?? "",
+    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || "mdanny892@gmail.com",
+    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE?.trim() || "+250 786 280 873",
+    linkedin:
+      process.env.NEXT_PUBLIC_LINKEDIN_URL?.trim() ||
+      "https://www.linkedin.com/in/mazimpaka-danny-ab71b3369/",
+    githubUsername: process.env.NEXT_PUBLIC_GITHUB_USERNAME?.trim() || "mdanny11",
   },
   cvUrl: process.env.NEXT_PUBLIC_CV_URL ?? "",
 } as const;

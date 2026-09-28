@@ -9,6 +9,14 @@ type ContactBody = {
   company_website?: string;
 };
 
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 export async function POST(request: Request) {
   let body: ContactBody;
   try {
@@ -37,16 +45,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "Enter a valid email address." }, { status: 400 });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL;
-  const from = process.env.CONTACT_FROM_EMAIL;
+  const apiKey = process.env.RESEND_API_KEY?.trim();
+  const to = process.env.CONTACT_TO_EMAIL?.trim() || "mdanny892@gmail.com";
+  const from =
+    process.env.CONTACT_FROM_EMAIL?.trim() ||
+    "onboarding@resend.dev";
 
-  if (!apiKey || !to || !from) {
+  if (!apiKey) {
     return NextResponse.json(
       {
         ok: false,
         error:
-          "Email delivery is not configured. Set RESEND_API_KEY, CONTACT_TO_EMAIL, and CONTACT_FROM_EMAIL, or use the contact details on this page.",
+          "Email delivery is not configured. Add RESEND_API_KEY to .env.local. Create a free key at https://resend.com (sign up with the inbox that should receive messages).",
       },
       { status: 503 }
     );
@@ -60,11 +70,12 @@ export async function POST(request: Request) {
       replyTo: email,
       subject: `[Portfolio] ${subject}`,
       text: `From: ${name} <${email}>\n\n${message}`,
+      html: `<p><strong>From:</strong> ${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;</p><p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>`,
     });
 
     if (error) {
       return NextResponse.json(
-        { ok: false, error: "The email provider rejected the message." },
+        { ok: false, error: error.message || "The email provider rejected the message." },
         { status: 502 }
       );
     }

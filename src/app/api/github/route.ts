@@ -13,11 +13,8 @@ type GithubApiRepo = {
 };
 
 export async function GET() {
-  const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME?.trim();
-
-  if (!username) {
-    return NextResponse.json({ configured: false, repos: [] });
-  }
+  const username =
+    process.env.NEXT_PUBLIC_GITHUB_USERNAME?.trim() || "mdanny11";
 
   const headers: HeadersInit = {
     Accept: "application/vnd.github+json",
