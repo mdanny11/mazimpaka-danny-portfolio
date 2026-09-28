@@ -1,3 +1,4 @@
+import { HomeScrollReset } from "@/components/layout/home-scroll-reset";
 import { AboutSection } from "@/components/sections/about";
 import { ArchitectureSection } from "@/components/sections/architecture";
 import { CertificationsSection } from "@/components/sections/certifications";
@@ -14,6 +15,7 @@ import { TerminalSection } from "@/components/sections/terminal";
 export default function Home() {
   return (
     <>
+      <HomeScrollReset />
       <HeroSection />
       <AboutSection />
       <EducationSection />

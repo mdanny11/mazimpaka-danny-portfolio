@@ -74,10 +74,12 @@ export function TerminalSection() {
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
-  const endRef = useRef<HTMLDivElement>(null);
+  const logRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ block: "nearest" });
+    const log = logRef.current;
+    if (!log) return;
+    log.scrollTop = log.scrollHeight;
   }, [lines]);
 
   function submit(command: string) {
@@ -140,7 +142,7 @@ export function TerminalSection() {
             <div className="border-b border-white/10 px-4 py-2 text-xs tracking-wide text-gold">
               danny@portfolio:~
             </div>
-            <div className="max-h-[28rem] overflow-y-auto px-4 py-4">
+            <div ref={logRef} className="max-h-[28rem] overflow-y-auto px-4 py-4">
               {lines.map((line, index) => (
                 <pre key={`${line.type}-${index}`} className="mb-2 whitespace-pre-wrap">
                   {line.type === "input" ? (
@@ -168,7 +170,6 @@ export function TerminalSection() {
                   aria-label="Terminal command"
                 />
               </div>
-              <div ref={endRef} />
             </div>
           </div>
         </Reveal>

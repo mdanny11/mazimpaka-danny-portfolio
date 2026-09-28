@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, IBM_Plex_Mono, Source_Sans_3 } from "next/font/google";
+import Script from "next/script";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Providers } from "@/components/providers";
@@ -84,6 +85,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${sourceSans.variable} ${cormorant.variable} ${ibmPlex.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
+        <Script id="danny-theme-default" strategy="beforeInteractive">
+          {`try{localStorage.setItem("danny-theme","dark")}catch(e){}`}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
